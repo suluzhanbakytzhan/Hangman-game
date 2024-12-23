@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Game - Start</title>
+    <style>
+        body {
+            font-family: Palatino Linotype, Book Antiqua;
+            text-align: center;
+            background-color: #4F6367;
+            color: #26415d;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #fcf8ef;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: #7A9E9F;
+            color: #fcf8ef;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+        }
+
+        .button:hover {
+            background-color: #fcf8ef;
+            color: #4F6367;
+            box-shadow: 0px 10px 20px 10px white;
+            transition-duration: 1s;
+        }
+
+        #rulesModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #rulesContent {
+            background-color: #B8D8D8;
+            color: #4F6367;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #rulesContent h3 {
+            text-align: center;
+        }
+
+        #closeRules {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: #7A9E9F;
+            color: #fcf8ef;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #closeRules:hover {
+            background-color: #fcf8ef;
+            color: #4F6367;
+            box-shadow: 0px 10px 20px 10px white;
+            transition-duration: 1s;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>Hangman Game</h1>
+    <button class="button" onclick="playStartSound(); redirectToGame()">Start</button>
+    <button class="button" onclick="showRules()">Rules</button>
+</div>
+
+<div id="rulesModal">
+    <div id="rulesContent">
+        <h3>How to Play</h3>
+        <p>Welcome to the Hangman Game! Here's how to play:</p>
+        <ul>
+            <li>Select a theme from the options above to begin the game.</li>
+            <li>A hidden word will appear, represented by underscores (_ _ _ _).</li>
+            <li>Guess the word by clicking on letters. Correct guesses will reveal the letters.</li>
+            <li>Incorrect guesses will add parts to the hangman drawing.</li>
+            <li>You lose if the full hangman is drawn before the word is guessed (6 wrong guesses).</li>
+            <li>You win if you correctly guess all the letters in the word!</li>
+            <li>Use the "Reveal Letter" button for hints (up to 3 hints per game).</li>
+        </ul>
+        <p>Good luck and have fun!</p>
+        <button id="closeRules" onclick="closeRules()">Close</button>
+    </div>
+</div>
+
+<audio id="startSound" src="notification-positive-bleep-joshua-chivers-1-00-01.mp3"></audio>
+
+<script>
+    function playStartSound() {
+        const sound = document.getElementById("startSound");
+        sound.play();
+    }
+
+    function redirectToGame() {
+        window.location.href = 'themes.html';
+    }
+
+    function showRules() {
+        document.getElementById("rulesModal").style.display = "flex";
+    }
+
+    function closeRules() {
+        document.getElementById("rulesModal").style.display = "none";
+    }
+</script>
+</body>
+</html>
